@@ -2,7 +2,7 @@
 
 Welcome to the digital neural network of Kumar Harsh. This isn't just a portfolio; it's a living repository of autonomous agents, hallucinated tokens, and pixel-perfect interfaces. 
 
-Currently, I'm diving deep into AI and ML orchestration at **Dassault Systèmes**, teaching LLMs how to act more like humans (and teaching humans how to keep up).
+Currently, I'm engineering AI Agent systems and ML orchestration at **Allianz Technology** (since Mar 2026), teaching LLMs how to act more like humans (and teaching humans how to keep up).
 
 ---
 
@@ -19,13 +19,14 @@ Everything you see here is built with a mix of raw logic, a lot of coffee, and s
 ### ⚡ Quick Navigation
 - **The Bento Box:** A high-density dashboard of my life, skills (Python, LLMs, RAG), and current mood.
 - **Quick Reply AI:** My latest obsession—making communication autonomous and actually smart.
-- **The Timeline:** From Computer Science student to AI Researcher.
+- **The Timeline:** From Computer Science student at ITER to Senior AI Engineer at Allianz Technology.
+- **Recommendations:** Endorsed by industry leaders on LinkedIn.
 
 ---
 
 ### 🧙‍♂️ Behind the Tokens: The "Harsh" Reality
 - **Developer Fact:** Harsh doesn't just code; he "debugs the future."
-- **Stats:** Over 63 repositories on GitHub. Most people have 63 tabs open; Harsh has 63 functioning codebases.
+- **Stats:** Over 69 repositories on GitHub. Most people have 69 tabs open; Harsh has 69 functioning codebases.
 - **Fuel Source:** Consumes more semi-colons and caffeine than actual food.
 - **Magic trick:** Stare at his GitHub profile long enough, and your `npm install` might actually work without errors.
 
@@ -53,6 +54,6 @@ If you want to run this neural node on your own machine:
 
 ### 📬 Send a Prompt
 Got a question about AI agents? Or just want to talk about vector databases? 
-**[Drop me a line → hello@kumarharsh.in](mailto:hello@kumarharsh.in)**
+**[Drop me a line → hello@kumarharsh.in](mailto:hello@kumarharsh.in)** | **[X (Twitter) → x.com/bhaksaalaa](https://x.com/bhaksaalaa)** | **[LinkedIn → linkedin.com/in/kumarharshn](https://www.linkedin.com/in/kumarharshn/)**
 
 Made with ❤️ (and a significant amount of tokens) by **Harsh**.
