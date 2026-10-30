@@ -1,59 +1,43 @@
-# 🤖 Kumar Harsh | The AI Agent Wrangler
+# Kumar Harsh | Freelance AI Engineer
 
-Welcome to the digital neural network of Kumar Harsh. This isn't just a portfolio; it's a living repository of autonomous agents, hallucinated tokens, and pixel-perfect interfaces. 
+Source for [kumarharsh.in](https://kumarharsh.in): a small, fast, static portfolio set in Cormorant Garamond and Hanken Grotesk, with one red dot as the only accent.
 
-Currently, I'm engineering AI Agent systems and ML orchestration at **Allianz Technology** (since Mar 2026), teaching LLMs how to act more like humans (and teaching humans how to keep up).
+## Pages
 
----
+| Route | File | What it is |
+| --- | --- | --- |
+| `/` | `index.html` | Home: hero, selected work, services, process, reviews, toolkit |
+| `/work/` | `work/index.html` | Contact sheet and a filterable index of all nine apps |
+| `/work/honey/` | `work/honey/index.html` | Honey case study, with a live provider-outage demo |
+| `/services/` | `services/index.html` | Services and the scope estimator |
+| `/about/` | `about/index.html` | Story, career timeline, how I work, recommendations |
+| `/contact/` | `contact/index.html` | Brief form and other ways to reach me |
 
-### 🧠 The Intelligence Under the Hood
-Everything you see here is built with a mix of raw logic, a lot of coffee, and some serious tech:
+Each page is plain HTML with its content written in place, so editing a sentence means editing that file. No framework is needed to render them.
 
-- **Gemini & LLMs:** The brains behind the operation. Powering agents that actually do things.
-- **React + Tailwind CSS:** For an interface so smooth it feels like it was rendered by a GPU in heaven.
-- **Express + Vite (Full-Stack Mode):** A robust server-side setup to ensure deployment is as stable as a trained model.
-- **Motion:** Because static websites are so 2023.
+- `src/site.css` holds the styles shared by every page. Anything specific to one page sits in that page's `<style>`.
+- `src/site.js` holds all behaviour: the phone menu, the work filter, the outage demo, the estimator and the contact form. Each block only runs on pages that contain its markup.
+- The contact form and the estimator open a pre-written email to hello@kumarharsh.in. There is no backend.
 
----
+## Run it
 
-### ⚡ Quick Navigation
-- **The Bento Box:** A high-density dashboard of my life, skills (Python, LLMs, RAG), and current mood.
-- **Quick Reply AI:** My latest obsession—making communication autonomous and actually smart.
-- **The Timeline:** From Computer Science student at ITER to Senior AI Engineer at Allianz Technology.
-- **Recommendations:** Endorsed by industry leaders on LinkedIn.
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # outputs dist/, one folder per route
+npm run preview  # serve the built site
+```
 
----
+`vite.config.ts` lists every page in `build.rollupOptions.input`. When you add a page, add it there and to `public/sitemap.xml`.
 
-### 🧙‍♂️ Behind the Tokens: The "Harsh" Reality
-- **Developer Fact:** Harsh doesn't just code; he "debugs the future."
-- **Stats:** Over 69 repositories on GitHub. Most people have 69 tabs open; Harsh has 69 functioning codebases.
-- **Fuel Source:** Consumes more semi-colons and caffeine than actual food.
-- **Magic trick:** Stare at his GitHub profile long enough, and your `npm install` might actually work without errors.
+Vercel builds the site with `vite build` and serves `dist/`.
 
----
+## Content to keep current
 
-### 🛠️ Local Execution (For the Curious)
-If you want to run this neural node on your own machine:
+- The arch illustration on `/about/` stands in for a portrait. Swap it for a photo when you have one.
+- Counts such as "9 live apps" and "68+ repositories" appear on several pages. Search for them when they change.
+- Career dates live on `/` and `/about/`.
 
-1. **Clone the Goods:**
-   ```bash
-   git clone https://github.com/haarsh24/portfolio.git
-   ```
-2. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
-3. **Ignite the Engine:**
-   ```bash
-   npm run dev
-   ```
+## Say hello
 
-*Note: If you don't have code running on port 3000, are you even developing?*
-
----
-
-### 📬 Send a Prompt
-Got a question about AI agents? Or just want to talk about vector databases? 
-**[Drop me a line → hello@kumarharsh.in](mailto:hello@kumarharsh.in)** | **[X (Twitter) → x.com/bhaksaalaa](https://x.com/bhaksaalaa)** | **[LinkedIn → linkedin.com/in/kumarharshn](https://www.linkedin.com/in/kumarharshn/)**
-
-Made with ❤️ (and a significant amount of tokens) by **Harsh**.
+[hello@kumarharsh.in](mailto:hello@kumarharsh.in) · [LinkedIn](https://www.linkedin.com/in/kumarharshn/) · [X](https://x.com/bhaksaalaa) · [GitHub](https://github.com/haarsh24)

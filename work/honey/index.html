@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Honey, an AI assistant that lives in WhatsApp — Kumar Harsh</title>
+<meta name="description" content="Case study: Honey, a private, always-on AI assistant inside WhatsApp that runs serverless for ₹0 a month, with automatic fallbacks across Workers AI, Groq and Gemini.">
+<meta name="author" content="Kumar Harsh">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#EEEFEA">
+<link rel="canonical" href="https://kumarharsh.in/work/honey/">
+<meta property="og:title" content="Honey, an AI assistant that lives in WhatsApp — Kumar Harsh">
+<meta property="og:description" content="Case study: Honey, a private, always-on AI assistant inside WhatsApp that runs serverless for ₹0 a month, with automatic fallbacks across Workers AI, Groq and Gemini.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kumarharsh.in/work/honey/">
+<meta property="og:image" content="https://github.com/haarsh24.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@bhaksaalaa">
+<meta name="twitter:creator" content="@bhaksaalaa">
+<meta name="twitter:title" content="Honey, an AI assistant that lives in WhatsApp — Kumar Harsh">
+<meta name="twitter:description" content="Case study: Honey, a private, always-on AI assistant inside WhatsApp that runs serverless for ₹0 a month, with automatic fallbacks across Workers AI, Groq and Gemini.">
+<meta name="twitter:image" content="https://github.com/haarsh24.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/src/site.css">
+<style>
+.chip{min-height:44px;padding:0 14px;border-radius:999px;border:1px solid #EEEFEA;font-family:inherit;font-size:14px;cursor:pointer;transition:background .2s,color .2s}
+.nx{display:block;background:#E6E8E2;transition:background .4s,color .4s}
+.nx:hover{background:#1F2723;color:#EEEFEA}
+.nx:hover .muted{color:rgba(238,239,234,0.72)}
+.nx:hover .nt{transform:translateX(20px)}
+.nt{display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion:reduce){.chip,.nx,.nt{transition:none}.nx:hover .nt{transform:none}}
+</style>
+<script type="module" src="/src/site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="wrap hdr">
+<a href="/" class="serif brand">Kumar Harsh</a>
+<span class="avail muted"><i></i>Available for freelance work</span>
+<nav class="nav" aria-label="Primary"><a class="on" href="/work/" aria-current="page">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+</header>
+<div id="menu" class="menu dk" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+<div class="orb" aria-hidden="true"></div>
+<div class="menu-top"><a href="/" class="serif brand">Kumar Harsh</a><button class="menu-close" type="button" aria-label="Close menu"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2 L14 14 M14 2 L2 14"/></svg></button></div>
+<nav class="menu-nav" aria-label="Primary"><a href="/work/" aria-current="page">Work</a><a href="/services/">Services</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<div class="menu-meta"><p class="cap">Portfolio, Edition 2026</p><p class="avail"><i></i>Available for freelance work</p><div class="menu-links"><a href="mailto:hello@kumarharsh.in">hello@kumarharsh.in</a><a href="https://github.com/haarsh24">GitHub</a><a href="https://www.linkedin.com/in/kumarharshn/">LinkedIn</a><a href="https://x.com/bhaksaalaa">X</a><a href="https://instagram.com/haarshn">Instagram</a></div></div>
+</div>
+<main id="main"><section class="dk" style="overflow:hidden">
+<div class="wrap" style="padding-top:32px;padding-bottom:72px">
+<a class="tl" href="/work/">Back to work</a>
+<div style="margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:48px 48px">
+<div style="flex:1 1 440px;min-width:0">
+<h1 class="hl h1" style="margin:0;font-size:clamp(60px,8vw,112px)">Honey</h1>
+<p class="lede" style="margin:32px 0 0;max-width:520px">A private, witty, always-on AI assistant and life OS that lives in WhatsApp, running serverless for ₹0 a month.</p>
+</div>
+<div style="position:relative;flex:0 0 440px;max-width:100%;min-height:620px;display:flex;align-items:center;justify-content:center">
+<div class="orb" style="position:absolute;left:-8px;top:36px;width:230px"></div>
+<div style="position:relative;width:370px;max-width:100%;box-sizing:border-box;background:#1F2723;border:1.5px solid #EEEFEA;border-radius:28px;padding:28px 24px;display:flex;flex-direction:column;gap:14px">
+<div class="serif" style="font-size:28px;font-weight:500;letter-spacing:-0.01em">Honey</div>
+<div style="font-size:14px;color:rgba(238,239,234,0.72)">Simulate an AI provider outage</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+
+<button class="chip" type="button" data-mode="0" data-result="Reply sent by Workers AI (Llama 3)." data-fail="" aria-pressed="true" style="background:#EEEFEA;color:#1F2723">All healthy</button>
+
+<button class="chip" type="button" data-mode="1" data-result="Reply sent by Groq (LLaMA-3)." data-fail="Rate-limited, skipped" aria-pressed="false" style="background:transparent;color:#EEEFEA">Workers AI rate-limited</button>
+
+<button class="chip" type="button" data-mode="2" data-result="Reply sent by Gemini 2.5 Flash." data-fail="Down, skipped" aria-pressed="false" style="background:transparent;color:#EEEFEA">Workers AI and Groq down</button>
+
+</div>
+<div style="margin-top:4px">
+
+<div data-row style="display:flex;align-items:center;gap:14px;padding:13px 0;border-top:1px solid rgba(238,239,234,0.22);opacity:1">
+<span data-dot style="flex:none;width:11px;height:11px;border-radius:50%;box-sizing:border-box;border:1.5px solid #EEEFEA;background:#D8452B"></span>
+<div style="min-width:0"><div style="font-size:16px">Workers AI (Llama 3)</div><div data-status style="margin-top:1px;font-size:13px;color:rgba(238,239,234,0.72)">Answering</div></div>
+</div>
+
+<div data-row style="display:flex;align-items:center;gap:14px;padding:13px 0;border-top:1px solid rgba(238,239,234,0.22);opacity:1">
+<span data-dot style="flex:none;width:11px;height:11px;border-radius:50%;box-sizing:border-box;border:1.5px solid #EEEFEA;background:transparent"></span>
+<div style="min-width:0"><div style="font-size:16px">Groq (LLaMA-3)</div><div data-status style="margin-top:1px;font-size:13px;color:rgba(238,239,234,0.72)">Standing by</div></div>
+</div>
+
+<div data-row style="display:flex;align-items:center;gap:14px;padding:13px 0;border-top:1px solid rgba(238,239,234,0.22);opacity:1">
+<span data-dot style="flex:none;width:11px;height:11px;border-radius:50%;box-sizing:border-box;border:1.5px solid #EEEFEA;background:transparent"></span>
+<div style="min-width:0"><div style="font-size:16px">Gemini 2.5 Flash</div><div data-status style="margin-top:1px;font-size:13px;color:rgba(238,239,234,0.72)">Standing by</div></div>
+</div>
+
+</div>
+<div class="serif" style="padding-top:14px;border-top:1px solid rgba(238,239,234,0.22);font-style:italic;font-size:22px;line-height:1.2" data-outage-result role="status" aria-live="polite">Reply sent by Workers AI (Llama 3).</div>
+</div>
+</div>
+</div>
+<p class="muted" style="margin:8px 0 0;font-size:14px;text-align:right">Try it: pick an outage and watch the reply move down the cascade.</p>
+<dl style="margin:40px 0 0;display:flex;flex-wrap:wrap;gap:20px 64px;padding-top:24px;border-top:1px solid rgba(238,239,234,0.22)">
+<div><dt class="muted" style="font-size:14px">Medium</dt><dd style="margin:4px 0 0;font-size:18px">WhatsApp assistant</dd></div>
+<div><dt class="muted" style="font-size:14px">Category</dt><dd style="margin:4px 0 0;font-size:18px">Autonomous AI agent</dd></div>
+<div><dt class="muted" style="font-size:14px">Cost to run</dt><dd style="margin:4px 0 0;font-size:18px">₹0 a month</dd></div>
+<div><dt class="muted" style="font-size:14px">Stack</dt><dd style="margin:4px 0 0;font-size:18px">Cloudflare Workers, D1, Gemini 2.5 Flash</dd></div>
+<div><dt class="muted" style="font-size:14px">Code</dt><dd style="margin:4px 0 0;font-size:18px"><a class="tl" href="https://github.com/haarsh24/honey" style="padding:0;font-size:18px">github.com/haarsh24/honey</a></dd></div>
+</dl>
+</div>
+</section>
+
+<section class="wrap" style="padding-top:104px;padding-bottom:104px">
+<div style="display:flex;flex-wrap:wrap;gap:20px 72px;padding-bottom:72px;"><p class="serif muted" style="flex:0 0 180px;margin:8px 0 0;font-style:italic;font-weight:300;font-size:26px">What it is</p><div style="flex:1 1 520px;min-width:0;max-width:880px"><p class="hl" style="margin:0;font-size:clamp(26px,2.8vw,40px);line-height:1.12;letter-spacing:-0.025em">A private, witty, always-on assistant that lives directly in WhatsApp.</p><p class="body" style="margin:22px 0 0;max-width:620px">It remembers context and personal facts, sets natural-language reminders, tracks expenses from receipt photos, ghostwrites and schedules LinkedIn posts, understands voice notes in English, Hindi and Hinglish, and replies with synthesized audio.</p></div></div><div style="display:flex;flex-wrap:wrap;gap:20px 72px;border-top:1px solid rgba(31,39,35,0.22);padding-top:72px;"><p class="serif muted" style="flex:0 0 180px;margin:8px 0 0;font-style:italic;font-weight:300;font-size:26px">The constraint</p><div style="flex:1 1 520px;min-width:0;max-width:880px"><p class="hl" style="margin:0;font-size:clamp(26px,2.8vw,40px);line-height:1.12;letter-spacing:-0.025em">Run all of it for ₹0 a month.</p><p class="body" style="margin:22px 0 0;max-width:620px">Honey runs serverless on free-tier infrastructure: Cloudflare Workers, a Cloudflare D1 database and a multi-provider AI cascade, so it stays on without a bill.</p></div></div>
+</section>
+
+<section class="wrap" style="padding-bottom:104px">
+<h2 class="hl h2" style="margin:0 0 48px">How it works</h2>
+<ol style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:48px 40px">
+<li style="flex:1 1 260px;min-width:0"><div class="hl" style="font-style:italic;font-size:clamp(96px,10vw,140px);line-height:0.8;color:#1F2723">1</div><div class="serif" style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(31,39,35,0.22);font-size:28px;font-weight:500;letter-spacing:-0.01em">A message arrives</div><p class="body" style="margin:6px 0 0;font-size:17px">WhatsApp passes it to the Meta Cloud API, then to a Cloudflare Worker running at the edge.</p></li><li style="flex:1 1 260px;min-width:0"><div class="hl" style="font-style:italic;font-size:clamp(96px,10vw,140px);line-height:0.8;color:#D8452B">2</div><div class="serif" style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(31,39,35,0.22);font-size:28px;font-weight:500;letter-spacing:-0.01em">The cascade answers</div><p class="body" style="margin:6px 0 0;font-size:17px">Workers AI (Llama 3) first, then Groq, then Gemini 2.5 Flash if there is a rate limit or slowdown.</p></li><li style="flex:1 1 260px;min-width:0"><div class="hl" style="font-style:italic;font-size:clamp(96px,10vw,140px);line-height:0.8;color:#1F2723">3</div><div class="serif" style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(31,39,35,0.22);font-size:28px;font-weight:500;letter-spacing:-0.01em">Memory and routines</div><p class="body" style="margin:6px 0 0;font-size:17px">Context lives in a D1 vector database. A minutely cron engine runs the scheduled routines.</p></li>
+</ol>
+</section>
+
+<section class="wrap" style="padding-bottom:104px">
+<div class="wart" style="background:#E6E8E2;color:#1F2723"><i class="rm" style="left:14px;top:14px"></i><i class="rm" style="right:14px;top:14px"></i><i class="rm" style="left:14px;bottom:14px"></i><i class="rm" style="right:14px;bottom:14px"></i><span class="serif" style="position:absolute;left:44px;top:30px;font-style:italic;font-size:20px;opacity:0.72">Fig. 03</span><div class="wscroll" tabindex="0" role="group" aria-label="Diagram. Scrolls sideways on small screens."><svg class="big" viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Diagram: WhatsApp to Meta Cloud API to a Cloudflare edge worker, which uses an AI failover cascade of Workers AI, Groq and Gemini, a D1 vector database and a minutely cron engine"><g fill="none" stroke="#1F2723" stroke-width="1.3" font-family="'Cormorant Garamond',Georgia,serif" font-style="italic"><rect x="60" y="236" width="160" height="48" rx="24"/><text x="140" y="267" text-anchor="middle" font-size="22" fill="#1F2723" stroke="none">WhatsApp</text><path d="M220 260 H290"/><rect x="290" y="236" width="190" height="48" rx="24"/><text x="385" y="267" text-anchor="middle" font-size="22" fill="#1F2723" stroke="none">Meta Cloud API</text><path d="M480 260 H566"/><circle cx="650" cy="260" r="84"/><text x="650" y="254" text-anchor="middle" font-size="24" fill="#1F2723" stroke="none">Cloudflare</text><text x="650" y="282" text-anchor="middle" font-size="24" fill="#1F2723" stroke="none">Edge Worker</text><circle cx="709" cy="201" r="9" fill="#D8452B" stroke="none"/><path d="M734 260 C782 260 782 120 834 120"/><path d="M734 260 H830"/><path d="M734 260 C782 260 782 400 830 400"/><text x="834" y="80" font-size="21" fill="#1F2723" stroke="none" opacity="0.75">AI failover cascade</text><circle cx="850" cy="120" r="13" fill="#1F2723"/><circle cx="975" cy="120" r="13"/><circle cx="1100" cy="120" r="13"/><path d="M863 120 H962 M950 112 L962 120 L950 128"/><path d="M988 120 H1087 M1075 112 L1087 120 L1075 128"/><text x="850" y="164" text-anchor="middle" font-size="20" fill="#1F2723" stroke="none">Workers AI</text><text x="975" y="164" text-anchor="middle" font-size="20" fill="#1F2723" stroke="none">Groq</text><text x="1100" y="164" text-anchor="middle" font-size="20" fill="#1F2723" stroke="none">Gemini 2.5</text><rect x="830" y="236" width="300" height="48" rx="24"/><text x="980" y="267" text-anchor="middle" font-size="22" fill="#1F2723" stroke="none">D1 vector database</text><text x="830" y="316" font-size="19" fill="#1F2723" stroke="none" opacity="0.75">multilingual embeddings</text><rect x="830" y="376" width="300" height="48" rx="24"/><text x="980" y="407" text-anchor="middle" font-size="22" fill="#1F2723" stroke="none">Minutely cron engine</text><text x="830" y="454" font-size="19" fill="#1F2723" stroke="none" opacity="0.75">8 AM briefing, 1 PM quiz,</text><text x="830" y="478" font-size="19" fill="#1F2723" stroke="none" opacity="0.75">8:30 PM habits, market alerts</text><text x="60" y="130" font-size="23" fill="#1F2723" stroke="none" opacity="0.75">Production serverless topology</text><text x="60" y="476" font-size="24" fill="#1F2723" stroke="none">₹0 a month in cloud spend</text></g></svg></div></div>
+<p class="cap" style="margin:16px 0 0">Production serverless topology: free-tier infrastructure end to end.</p>
+</section>
+
+<section class="wrap" style="padding-bottom:112px">
+<h2 class="hl h2" style="margin:0 0 40px">What Honey does<span class="dot"></span></h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
+<div class="card" style="min-height:220px;display:flex;flex-direction:column;justify-content:space-between;gap:32px"><h3 class="hl" style="margin:0;font-size:clamp(26px,2.6vw,36px);line-height:1.05;letter-spacing:-0.03em">Voice notes and audio</h3><p class="body" style="margin:0;font-size:17px">Speak in English, Hindi or Hinglish. Honey works out the intent and replies with text plus a voice note.</p></div><div class="card" style="min-height:220px;display:flex;flex-direction:column;justify-content:space-between;gap:32px"><h3 class="hl" style="margin:0;font-size:clamp(26px,2.6vw,36px);line-height:1.05;letter-spacing:-0.03em">Receipt and PDF OCR</h3><p class="body" style="margin:0;font-size:17px">Snap a rupee bill to log a categorized expense. PDFs are digested and their due dates scheduled automatically.</p></div><div class="card" style="min-height:220px;display:flex;flex-direction:column;justify-content:space-between;gap:32px"><h3 class="hl" style="margin:0;font-size:clamp(26px,2.6vw,36px);line-height:1.05;letter-spacing:-0.03em">Semantic recall</h3><p class="body" style="margin:0;font-size:17px">Search notes, facts and journals by meaning, using vector embeddings instead of exact keywords.</p></div><div class="card" style="min-height:220px;display:flex;flex-direction:column;justify-content:space-between;gap:32px"><h3 class="hl" style="margin:0;font-size:clamp(26px,2.6vw,36px);line-height:1.05;letter-spacing:-0.03em">LinkedIn post factory</h3><p class="body" style="margin:0;font-size:17px">Turns a quick voice brain-dump into five ghostwritten posts in your style, scheduled for Tuesday, Wednesday and Thursday mornings.</p></div><div class="card" style="min-height:220px;display:flex;flex-direction:column;justify-content:space-between;gap:32px"><h3 class="hl" style="margin:0;font-size:clamp(26px,2.6vw,36px);line-height:1.05;letter-spacing:-0.03em">Market alerts and news</h3><p class="body" style="margin:0;font-size:17px">Fifteen-minute price monitors for Indian equities (Reliance, Nifty, Sensex) and mutual fund NAVs, plus a morning news digest.</p></div><div class="card" style="min-height:220px;display:flex;flex-direction:column;justify-content:space-between;gap:32px"><h3 class="hl" style="margin:0;font-size:clamp(26px,2.6vw,36px);line-height:1.05;letter-spacing:-0.03em">Multi-LLM resilience</h3><p class="body" style="margin:0;font-size:17px">Cloudflare Workers AI cascades into Groq, then Gemini 2.5 Flash, if there is a rate limit or a provider slowdown.</p></div>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom:104px">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;margin-bottom:40px"><h2 class="hl h2" style="margin:0">A day with Honey</h2><span class="cap">The scheduled routines</span></div>
+<div class="cols-4" style="gap:24px">
+<div class="card" style="min-height:180px;display:flex;flex-direction:column;justify-content:space-between;gap:24px"><span class="hl" style="font-style:italic;font-size:clamp(34px,3.2vw,46px);line-height:1;letter-spacing:-0.03em">8:00 AM</span><span class="body" style="font-size:18px">Morning briefing</span></div><div class="card" style="min-height:180px;display:flex;flex-direction:column;justify-content:space-between;gap:24px"><span class="hl" style="font-style:italic;font-size:clamp(34px,3.2vw,46px);line-height:1;letter-spacing:-0.03em">1:00 PM</span><span class="body" style="font-size:18px">Daily quiz</span></div><div class="card" style="min-height:180px;display:flex;flex-direction:column;justify-content:space-between;gap:24px"><span class="hl" style="font-style:italic;font-size:clamp(34px,3.2vw,46px);line-height:1;letter-spacing:-0.03em">8:30 PM</span><span class="body" style="font-size:18px">Habits check-in</span></div><div class="card" style="min-height:180px;display:flex;flex-direction:column;justify-content:space-between;gap:24px"><span class="hl" style="font-style:italic;font-size:clamp(34px,3.2vw,46px);line-height:1;letter-spacing:-0.03em">Every 15 min</span><span class="body" style="font-size:18px">Market alerts</span></div>
+</div>
+</section>
+
+<section class="wrap" style="padding-bottom:112px">
+<div style="display:flex;flex-wrap:wrap;gap:40px 72px"><div style="flex:1 1 320px;min-width:0"><h2 class="hl h2" style="margin:0 0 24px">Credits</h2>
+<dl style="margin:0"><div style="display:flex;gap:16px;padding:9px 0;border-top:1px solid rgba(31,39,35,0.22)"><dt class="serif" style="flex:0 0 84px;font-style:italic;font-size:18px;color:#5F6A64">Concept</dt><dd style="margin:0;font-size:15px;line-height:1.5;min-width:0;overflow-wrap:anywhere">Kumar Harsh</dd></div><div style="display:flex;gap:16px;padding:9px 0;border-top:1px solid rgba(31,39,35,0.22)"><dt class="serif" style="flex:0 0 84px;font-style:italic;font-size:18px;color:#5F6A64">Build</dt><dd style="margin:0;font-size:15px;line-height:1.5;min-width:0;overflow-wrap:anywhere">Kumar Harsh</dd></div><div style="display:flex;gap:16px;padding:9px 0;border-top:1px solid rgba(31,39,35,0.22)"><dt class="serif" style="flex:0 0 84px;font-style:italic;font-size:18px;color:#5F6A64">Runs on</dt><dd style="margin:0;font-size:15px;line-height:1.5;min-width:0;overflow-wrap:anywhere">Cloudflare Workers and D1</dd></div><div style="display:flex;gap:16px;padding:9px 0;border-top:1px solid rgba(31,39,35,0.22)"><dt class="serif" style="flex:0 0 84px;font-style:italic;font-size:18px;color:#5F6A64">Models</dt><dd style="margin:0;font-size:15px;line-height:1.5;min-width:0;overflow-wrap:anywhere">Workers AI, Groq, Gemini 2.5 Flash</dd></div></dl>
+</div><div style="flex:1 1 320px;min-width:0"><h2 class="hl h2" style="margin:0 0 24px">At a glance</h2>
+<dl style="margin:0"><div style="display:flex;gap:16px;padding:9px 0;border-top:1px solid rgba(31,39,35,0.22)"><dt class="serif" style="flex:0 0 84px;font-style:italic;font-size:18px;color:#5F6A64">Format</dt><dd style="margin:0;font-size:15px;line-height:1.5;min-width:0;overflow-wrap:anywhere">WhatsApp assistant</dd></div><div style="display:flex;gap:16px;padding:9px 0;border-top:1px solid rgba(31,39,35,0.22)"><dt class="serif" style="flex:0 0 84px;font-style:italic;font-size:18px;color:#5F6A64">Languages</dt><dd style="margin:0;font-size:15px;line-height:1.5;min-width:0;overflow-wrap:anywhere">English, Hindi and Hinglish</dd></div><div style="display:flex;gap:16px;padding:9px 0;border-top:1px solid rgba(31,39,35,0.22)"><dt class="serif" style="flex:0 0 84px;font-style:italic;font-size:18px;color:#5F6A64">Cost</dt><dd style="margin:0;font-size:15px;line-height:1.5;min-width:0;overflow-wrap:anywhere">₹0 a month</dd></div><div style="display:flex;gap:16px;padding:9px 0;border-top:1px solid rgba(31,39,35,0.22)"><dt class="serif" style="flex:0 0 84px;font-style:italic;font-size:18px;color:#5F6A64">Code</dt><dd style="margin:0;font-size:15px;line-height:1.5;min-width:0;overflow-wrap:anywhere"><a class="tl" href="https://github.com/haarsh24/honey" style="padding:0;font-size:15px">github.com/haarsh24/honey</a></dd></div></dl>
+</div></div>
+<div style="margin-top:56px;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 36px">
+<p class="hl" style="margin:0;font-size:clamp(28px,3vw,40px);line-height:1.1;letter-spacing:-0.03em">Want a WhatsApp agent of your own?</p>
+<a class="tl" href="mailto:hello@kumarharsh.in?subject=Custom%20WhatsApp%20Agent" style="padding:0;font-size:18px">Commission a custom WhatsApp agent</a>
+</div>
+</section>
+
+<a class="nx" href="https://memory.kumarharsh.in/">
+<div class="wrap" style="padding-top:72px;padding-bottom:80px">
+<div class="muted" style="font-size:15px">Next work</div>
+<span class="nt hl" style="margin-top:8px;font-size:clamp(52px,7vw,100px);line-height:0.98;letter-spacing:-0.035em">Memory</span>
+<div class="muted" style="margin-top:14px;font-size:18px">The flagship: a second brain for the web, with Gemini semantic search and URL context retention.</div>
+</div>
+</a>
+<div style="height:48px"></div>
+</main>
+<footer class="wrap"><div style="padding:36px 0 32px;border-top:1px solid rgba(31,39,35,0.22);color:#5F6A64"><div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:12px 40px"><div><div class="serif" style="font-size:24px;font-weight:500;letter-spacing:-0.01em;color:#1F2723">Kumar Harsh</div><div class="cap" style="margin-top:4px;color:#5F6A64">Typeset in Cormorant Garamond and Hanken Grotesk. Edition 2026.</div></div><span class="fl" style="display:flex;flex-wrap:wrap;gap:0 28px;font-size:15px"><a href="https://github.com/haarsh24">GitHub</a><a href="https://www.linkedin.com/in/kumarharshn/">LinkedIn</a><a href="https://x.com/bhaksaalaa">X</a><a href="https://instagram.com/haarshn">Instagram</a><a href="/contact/">Contact</a></span></div><div style="margin-top:20px;font-size:14px;color:#5F6A64">© 2026 Kumar Harsh. Freelance AI engineer, Bengaluru, India.</div></div></footer>
+</body>
+</html>
