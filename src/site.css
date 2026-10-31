@@ -114,9 +114,6 @@ body{color:#1F2723;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-fon
 #brief-note:empty{display:none}
 
 /* ---- Phones and small tablets ---- */
-@media (max-width:900px){
-  .aside{order:2;flex:1 1 100% !important;max-width:420px}
-}
 @media (max-width:640px){
   .stats{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 20px !important}
   .stat b{font-size:56px}
