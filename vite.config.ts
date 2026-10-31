@@ -11,6 +11,7 @@ const pages = {
   services: 'services/index.html',
   about: 'about/index.html',
   contact: 'contact/index.html',
+  notFound: '404.html',
 };
 
 export default defineConfig(({mode}) => {

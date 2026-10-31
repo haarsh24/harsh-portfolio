@@ -32,6 +32,13 @@ npm run preview  # serve the built site
 
 Vercel builds the site with `vite build` and serves `dist/`.
 
+## Site files
+
+- `404.html` is shown for any unknown URL (Vercel serves it automatically).
+- `public/` holds the favicon, the touch icon, `og.png` (the 1200 by 630 share card), `robots.txt` and `sitemap.xml`.
+- `vercel.json` adds security headers, long caching for `/assets/`, and trailing slashes on routes.
+- Canonical URLs, the sitemap and the JSON-LD use `https://www.kumarharsh.in`, because the bare domain redirects to `www`. If you flip that redirect in Vercel, change them to match.
+
 ## Content to keep current
 
 - The arch illustration on `/about/` stands in for a portrait. Swap it for a photo when you have one.

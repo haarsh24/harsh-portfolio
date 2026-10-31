@@ -14,7 +14,7 @@ a{color:inherit;text-decoration:none}
 .nav a{position:relative;display:inline-block;padding:12px 2px;font-size:16px}
 .nav a:hover,.fl a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
 .nav a.on::before{content:"";position:absolute;left:-14px;top:50%;width:7px;height:7px;margin-top:-3px;border-radius:50%;background:#D8452B}
-.fl a{display:inline-block;padding:12px 0}
+.fl a{display:inline-block;padding:12px 8px;margin:0 -8px}
 .tl{display:inline-block;padding:12px 0;font-size:17px;font-weight:500;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:8px}
 .tl:hover{text-decoration-color:#D8452B;text-decoration-thickness:2px}
 .dk{background:#1F2723;color:#EEEFEA}
