@@ -7,7 +7,7 @@ Source for [kumarharsh.in](https://kumarharsh.in): a small, fast, static portfol
 | Route | File | What it is |
 | --- | --- | --- |
 | `/` | `index.html` | Home: hero, selected work, services, process, reviews, toolkit |
-| `/work/` | `work/index.html` | Contact sheet and a filterable index of all nine apps |
+| `/work/` | `work/index.html` | Contact sheet and a filterable index of all ten projects |
 | `/work/honey/` | `work/honey/index.html` | Honey case study, with a live provider-outage demo |
 | `/services/` | `services/index.html` | Services and the scope estimator |
 | `/services/ai-agents/`, `/rag/`, `/mvp-sprint/`, `/ai-reliability/` | `services/<slug>/index.html` | One landing page per service, each with FAQs |
@@ -46,7 +46,7 @@ Vercel builds the site with `vite build` and serves `dist/`.
 ## Content to keep current
 
 - The arch illustration on `/about/` stands in for a portrait. Swap it for a photo when you have one.
-- Counts such as "9 live apps" and "68+ repositories" appear on several pages. Search for them when they change.
+- Counts such as "ten projects" and "Four of ten" and "68+ repositories" appear on several pages. Search for them when they change.
 - Career dates live on `/` and `/about/`.
 - Timelines (10–14 days, 2–3 weeks, 1–2 weeks) appear on `/services/`, the four service pages and `/writing/how-long-to-build-an-ai-agent/`. Change them together.
 - Article dates are in each article's byline, its JSON-LD, `public/feed.xml` and `public/sitemap.xml`.
