@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Build a WhatsApp AI Assistant on Cloudflare Workers</title>
+<meta name="description" content="The architecture behind Honey, a WhatsApp AI assistant on Cloudflare Workers and D1 that runs for ₹0 a month: failover cascade, memory and cron routines.">
+<meta name="author" content="Kumar Harsh">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#EEEFEA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://www.kumarharsh.in/writing/whatsapp-ai-assistant-cloudflare-workers/">
+<meta property="og:title" content="How to Build a WhatsApp AI Assistant on Cloudflare Workers">
+<meta property="og:description" content="The architecture behind Honey, a WhatsApp AI assistant on Cloudflare Workers and D1 that runs for ₹0 a month: failover cascade, memory and cron routines.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.kumarharsh.in/writing/whatsapp-ai-assistant-cloudflare-workers/">
+<meta property="og:image" content="https://www.kumarharsh.in/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kumar Harsh. I turn AI ideas into live products.">
+<meta property="og:site_name" content="Kumar Harsh">
+<meta property="article:published_time" content="2026-11-01">
+<meta property="article:author" content="Kumar Harsh">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@bhaksaalaa">
+<meta name="twitter:creator" content="@bhaksaalaa">
+<meta name="twitter:title" content="How to Build a WhatsApp AI Assistant on Cloudflare Workers">
+<meta name="twitter:description" content="The architecture behind Honey, a WhatsApp AI assistant on Cloudflare Workers and D1 that runs for ₹0 a month: failover cascade, memory and cron routines.">
+<meta name="twitter:image" content="https://www.kumarharsh.in/og.png">
+<meta name="twitter:image:alt" content="Kumar Harsh. I turn AI ideas into live products.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How to build a WhatsApp AI assistant on Cloudflare Workers",
+  "description": "The architecture behind Honey, a WhatsApp AI assistant on Cloudflare Workers and D1 that runs for ₹0 a month: failover cascade, memory and cron routines.",
+  "datePublished": "2026-11-01",
+  "dateModified": "2026-11-01",
+  "author": {
+    "@type": "Person",
+    "name": "Kumar Harsh",
+    "url": "https://www.kumarharsh.in/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Kumar Harsh",
+    "url": "https://www.kumarharsh.in/"
+  },
+  "image": "https://www.kumarharsh.in/og.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.kumarharsh.in/writing/whatsapp-ai-assistant-cloudflare-workers/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.kumarharsh.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Writing",
+      "item": "https://www.kumarharsh.in/writing/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "WhatsApp AI assistant on Cloudflare Workers",
+      "item": "https://www.kumarharsh.in/writing/whatsapp-ai-assistant-cloudflare-workers/"
+    }
+  ]
+}
+</script>
+<link rel="preload" href="/fonts/cormorant-garamond-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="alternate" type="application/rss+xml" title="Kumar Harsh: Writing" href="/feed.xml">
+<link rel="stylesheet" href="/src/site.css">
+<script type="module" src="/src/site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="wrap hdr">
+<a href="/" class="serif brand">Kumar Harsh</a>
+<span class="avail muted"><i></i>Available for freelance work</span>
+<nav class="nav" aria-label="Primary"><a href="/work/">Work</a><a href="/services/">Services</a><a class="on" href="/writing/" aria-current="page">Writing</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+</header>
+<div id="menu" class="menu dk" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+<div class="orb" aria-hidden="true"></div>
+<div class="menu-top"><a href="/" class="serif brand">Kumar Harsh</a><button class="menu-close" type="button" aria-label="Close menu"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2 L14 14 M14 2 L2 14"/></svg></button></div>
+<nav class="menu-nav" aria-label="Primary"><a href="/work/">Work</a><a href="/services/">Services</a><a href="/writing/" aria-current="page">Writing</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<div class="menu-meta"><p class="cap">Portfolio, Edition 2026</p><p class="avail"><i></i>Available for freelance work</p><div class="menu-links"><a href="mailto:hello@kumarharsh.in">hello@kumarharsh.in</a><a href="https://github.com/haarsh24">GitHub</a><a href="https://www.linkedin.com/in/kumarharshn/">LinkedIn</a><a href="https://x.com/bhaksaalaa">X</a><a href="https://instagram.com/haarshn">Instagram</a></div></div>
+</div>
+<main id="main"><article class="wrap" style="padding-top:40px;padding-bottom:72px">
+<nav aria-label="Breadcrumb" class="cap" style="font-size:19px"><a href="/writing/" style="display:inline-block;padding:6px 0;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px">Writing</a> / WhatsApp AI assistant on Cloudflare Workers</nav>
+<h1 class="hl h1" style="margin:28px 0 0;max-width:980px;font-size:clamp(38px,5vw,72px)">How to build a WhatsApp AI assistant on Cloudflare Workers</h1>
+<p class="cap" style="margin:24px 0 0;font-size:20px">By Kumar Harsh, <time datetime="2026-11-01">1 November 2026</time>, 3 min read</p>
+<div class="prose" style="margin-top:48px">
+<p>Honey is a personal AI assistant that lives in WhatsApp. It remembers facts, sets reminders, logs expenses from receipt photos and understands voice notes in English, Hindi and Hinglish. It runs on free-tier infrastructure for ₹0 a month. This article walks through the architecture in the order a message travels through it, and what to copy if you are building something similar.</p>
+<p>The full case study, with a live outage demo, is on the <a href="/work/honey/">Honey page</a>.</p>
+<h2>The constraint: ₹0 a month</h2>
+<p>Honey runs serverless on Cloudflare Workers, a Cloudflare D1 database and a multi-provider AI cascade. The budget shaped every decision: no always-on server to pay for, no separate vector database to host, and no dependency on a single AI provider.</p>
+<h2>1. A message arrives</h2>
+<p>WhatsApp passes each message to the Meta Cloud API, which calls a webhook. In Honey the webhook is a Cloudflare Worker running at the edge. Two rules apply to any bot built on the WhatsApp Cloud API:</p>
+<ul>
+<li>The webhook must pass Meta&rsquo;s verification handshake before messages are delivered to it.</li>
+<li>It should return a success response quickly and finish the slow work, such as calling a model and writing to the database, after responding. In a Worker, <code>ctx.waitUntil()</code> keeps that work running once the response has gone out.</li>
+</ul>
+<h2>2. The cascade answers</h2>
+<p>Workers AI (Llama 3) answers first. If it is rate-limited or slow, the request moves to Groq, and then to Gemini 2.5 Flash. Free tiers have limits, so a cascade is what lets a zero-cost assistant stay available: a limit on one provider moves the request to the next instead of ending the conversation.</p>
+<p>The design details, including timeouts, retries and circuit breakers, are covered in <a href="/writing/llm-provider-failover/">LLM provider failover</a>. On the Honey page you can pick an outage and watch the reply move down the cascade.</p>
+<h2>3. Memory</h2>
+<p>Context lives in a D1 vector database. Facts, notes and journal entries are stored with multilingual embeddings, so recall works by meaning instead of exact keywords. That matters for a user who mixes English, Hindi and Hinglish in one chat.</p>
+<p>At personal scale there is no need for a separate vector service. A single table that keeps each piece of text next to its embedding is enough to start.</p>
+<h2>4. Scheduled routines</h2>
+<p>A minutely cron engine runs the routines: an 8:00 AM morning briefing, a 1:00 PM daily quiz, an 8:30 PM habits check-in and market alerts every 15 minutes. One trigger that fires every minute and checks what is due keeps the scheduling logic in one place.</p>
+<h2>What to copy if you build your own</h2>
+<ul>
+<li>Respond to the webhook fast and do the work afterwards.</li>
+<li>Put the cheapest, fastest model first in the cascade and the most capable fallback last.</li>
+<li>Keep the cascade behind one function, so a provider can be swapped without touching the rest of the code.</li>
+<li>Store embeddings next to the text you will show the user.</li>
+<li>Start with one routine, then add more once the first runs reliably.</li>
+</ul>
+<h2>Want a WhatsApp agent of your own?</h2>
+<p>This is the kind of system I build as a freelance AI engineer. See <a href="/services/ai-agents/">AI agent development</a>, use the <a href="/services/#estimator">scope estimator</a> or <a href="/contact/">send a brief</a>. You get a direct reply within 12 hours.</p>
+</div>
+</article>
+
+<section class="wrap" style="padding-bottom:104px">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;margin-bottom:32px"><h2 class="hl h2" style="margin:0">Keep reading</h2></div>
+<a class="ix" href="/writing/llm-provider-failover/" style="justify-content:space-between"><span class="hl rt" style="flex:1 1 420px;min-width:0">LLM provider failover</span><span class="muted" style="font-size:16px">Read the article</span></a><a class="ix" href="/writing/how-long-to-build-an-ai-agent/" style="justify-content:space-between;border-bottom:1px solid rgba(31,39,35,0.22)"><span class="hl rt" style="flex:1 1 420px;min-width:0">How long to build an AI agent</span><span class="muted" style="font-size:16px">Read the article</span></a>
+</section></main>
+<footer class="wrap"><div style="padding:36px 0 32px;border-top:1px solid rgba(31,39,35,0.22);color:#5F6A64"><div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:12px 40px"><div><div class="serif" style="font-size:24px;font-weight:500;letter-spacing:-0.01em;color:#1F2723">Kumar Harsh</div><div class="cap" style="margin-top:4px;color:#5F6A64">Typeset in Cormorant Garamond and Hanken Grotesk. Edition 2026.</div></div><span class="fl" style="display:flex;flex-wrap:wrap;gap:0 28px;font-size:15px"><a href="https://github.com/haarsh24">GitHub</a><a href="https://www.linkedin.com/in/kumarharshn/">LinkedIn</a><a href="https://x.com/bhaksaalaa">X</a><a href="https://instagram.com/haarshn">Instagram</a><a href="/writing/">Writing</a><a href="/contact/">Contact</a></span></div><div style="margin-top:20px;font-size:14px;color:#5F6A64">© 2026 Kumar Harsh. Freelance AI engineer, Bengaluru, India.</div></div></footer>
+</body>
+</html>

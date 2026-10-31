@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LLM Provider Failover: Keep Your AI App Online</title>
+<meta name="description" content="How to design LLM failover: fallback cascades, timeouts, retry budgets, circuit breakers and chaos testing, with a TypeScript sketch.">
+<meta name="author" content="Kumar Harsh">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#EEEFEA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://www.kumarharsh.in/writing/llm-provider-failover/">
+<meta property="og:title" content="LLM Provider Failover: Keep Your AI App Online">
+<meta property="og:description" content="How to design LLM failover: fallback cascades, timeouts, retry budgets, circuit breakers and chaos testing, with a TypeScript sketch.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.kumarharsh.in/writing/llm-provider-failover/">
+<meta property="og:image" content="https://www.kumarharsh.in/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kumar Harsh. I turn AI ideas into live products.">
+<meta property="og:site_name" content="Kumar Harsh">
+<meta property="article:published_time" content="2026-11-01">
+<meta property="article:author" content="Kumar Harsh">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@bhaksaalaa">
+<meta name="twitter:creator" content="@bhaksaalaa">
+<meta name="twitter:title" content="LLM Provider Failover: Keep Your AI App Online">
+<meta name="twitter:description" content="How to design LLM failover: fallback cascades, timeouts, retry budgets, circuit breakers and chaos testing, with a TypeScript sketch.">
+<meta name="twitter:image" content="https://www.kumarharsh.in/og.png">
+<meta name="twitter:image:alt" content="Kumar Harsh. I turn AI ideas into live products.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "LLM provider failover: how to keep an AI app answering when a model API fails",
+  "description": "How to design LLM failover: fallback cascades, timeouts, retry budgets, circuit breakers and chaos testing, with a TypeScript sketch.",
+  "datePublished": "2026-11-01",
+  "dateModified": "2026-11-01",
+  "author": {
+    "@type": "Person",
+    "name": "Kumar Harsh",
+    "url": "https://www.kumarharsh.in/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Kumar Harsh",
+    "url": "https://www.kumarharsh.in/"
+  },
+  "image": "https://www.kumarharsh.in/og.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.kumarharsh.in/writing/llm-provider-failover/"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://www.kumarharsh.in/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Writing",
+      "item": "https://www.kumarharsh.in/writing/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "LLM provider failover",
+      "item": "https://www.kumarharsh.in/writing/llm-provider-failover/"
+    }
+  ]
+}
+</script>
+<link rel="preload" href="/fonts/cormorant-garamond-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/hanken-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="alternate" type="application/rss+xml" title="Kumar Harsh: Writing" href="/feed.xml">
+<link rel="stylesheet" href="/src/site.css">
+<script type="module" src="/src/site.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="wrap hdr">
+<a href="/" class="serif brand">Kumar Harsh</a>
+<span class="avail muted"><i></i>Available for freelance work</span>
+<nav class="nav" aria-label="Primary"><a href="/work/">Work</a><a href="/services/">Services</a><a class="on" href="/writing/" aria-current="page">Writing</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+</header>
+<div id="menu" class="menu dk" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+<div class="orb" aria-hidden="true"></div>
+<div class="menu-top"><a href="/" class="serif brand">Kumar Harsh</a><button class="menu-close" type="button" aria-label="Close menu"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2 L14 14 M14 2 L2 14"/></svg></button></div>
+<nav class="menu-nav" aria-label="Primary"><a href="/work/">Work</a><a href="/services/">Services</a><a href="/writing/" aria-current="page">Writing</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+<div class="menu-meta"><p class="cap">Portfolio, Edition 2026</p><p class="avail"><i></i>Available for freelance work</p><div class="menu-links"><a href="mailto:hello@kumarharsh.in">hello@kumarharsh.in</a><a href="https://github.com/haarsh24">GitHub</a><a href="https://www.linkedin.com/in/kumarharshn/">LinkedIn</a><a href="https://x.com/bhaksaalaa">X</a><a href="https://instagram.com/haarshn">Instagram</a></div></div>
+</div>
+<main id="main"><article class="wrap" style="padding-top:40px;padding-bottom:72px">
+<nav aria-label="Breadcrumb" class="cap" style="font-size:19px"><a href="/writing/" style="display:inline-block;padding:6px 0;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px">Writing</a> / LLM provider failover</nav>
+<h1 class="hl h1" style="margin:28px 0 0;max-width:980px;font-size:clamp(38px,5vw,72px)">LLM provider failover: how to keep an AI app answering when a model API fails</h1>
+<p class="cap" style="margin:24px 0 0;font-size:20px">By Kumar Harsh, <time datetime="2026-11-01">1 November 2026</time>, 3 min read</p>
+<div class="prose" style="margin-top:48px">
+<p>Every LLM API fails some of the time. Requests get rate-limited, responses slow down, servers return 5xx errors and streams drop halfway through an answer. If your app depends on one provider, that provider&rsquo;s bad hour is your outage. Failover is how you keep answering.</p>
+<h2>What actually fails</h2>
+<ul>
+<li><strong>Rate limits.</strong> The API returns a 429 because you, or everyone on a shared tier, sent too much.</li>
+<li><strong>Slow responses.</strong> The request succeeds eventually, but the first token arrives too late for a user to wait.</li>
+<li><strong>Server errors.</strong> A 500, 502 or 503 from the provider.</li>
+<li><strong>Dropped connections.</strong> A stream starts and then stops before the answer is complete.</li>
+</ul>
+<p>Each needs a decision: retry the same provider, move to another one, or give up with a clear message.</p>
+<h2>Pattern 1: an ordered cascade</h2>
+<p>List providers in the order you prefer them, usually cheapest and fastest first. Try the first. If it fails, try the next. Honey uses Cloudflare Workers AI (Llama 3), then Groq, then Gemini 2.5 Flash. A sketch in TypeScript:</p>
+<pre tabindex="0"><code>type Provider = {
+  name: string;
+  generate: (prompt: string) =&gt; Promise&lt;string&gt;;
+};
+
+// Preferred provider first.
+const cascade: Provider[] = [workersAi, groq, gemini];
+
+export async function answer(prompt: string) {
+  for (const provider of cascade) {
+    // Skip a provider that keeps failing.
+    if (breaker.isOpen(provider.name)) continue;
+    try {
+      const text = await withTimeout(
+        provider.generate(prompt),
+        8_000,
+      );
+      breaker.recordSuccess(provider.name);
+      return { text, provider: provider.name };
+    } catch (error) {
+      breaker.recordFailure(provider.name);
+      console.warn("provider failed", provider.name, error);
+    }
+  }
+  throw new Error("All providers failed");
+}</code></pre>
+<p><code>withTimeout</code> and <code>breaker</code> are small helpers, covered next.</p>
+<h2>Pattern 2: a timeout for every attempt</h2>
+<p>A provider that answers in forty seconds has failed for a chat user. Give each attempt its own time budget, ideally for the time to first token when you stream, and keep the total inside what a user will tolerate. Otherwise a slow first provider uses up the whole budget before the fallback gets a turn.</p>
+<h2>Pattern 3: retries with a budget</h2>
+<p>Transient errors deserve a retry, but retries add load to a provider that is already struggling. Three rules keep them safe:</p>
+<ul>
+<li>Use exponential backoff with jitter, so many clients do not retry at the same instant.</li>
+<li>Cap the retries per request, and ideally across all requests, as a retry budget.</li>
+<li>Do not retry errors that will not change, such as a malformed request. For a 429, respect the <code>Retry-After</code> header when the provider sends one.</li>
+</ul>
+<h2>Pattern 4: a circuit breaker</h2>
+<p>If a provider has failed several times in a row, stop sending it traffic for a short cooldown, then let a single request through to test whether it has recovered. This saves every user from waiting on a timeout you already expect, and it gives the provider room to recover.</p>
+<h2>Make the fallback honest</h2>
+<ul>
+<li><strong>Models answer differently.</strong> Test your prompts against the last model in the cascade, not only the first.</li>
+<li><strong>Log which provider answered.</strong> You cannot improve a cascade you cannot see.</li>
+<li><strong>Decide what happens when everything fails.</strong> A clear message beats a spinner.</li>
+</ul>
+<h2>Test the failures on purpose</h2>
+<p>A cascade you have never seen fail is a guess. Chaos testing means simulating the failures: slow responses, random 500s, dropped sockets and jitter. <a href="https://hiccups.kumarharsh.in/">Hiccup</a> is an endpoint that misbehaves on purpose for exactly this, so you can test retry budgets and backoff without building flaky mock servers. On the <a href="/work/honey/">Honey page</a>, the outage demo shows a cascade reacting to a failure.</p>
+<h2>Need this on your AI app?</h2>
+<p>Failover, retry budgets, circuit breakers and a chaos test suite are the core of my <a href="/services/ai-reliability/">LLM reliability engineering</a> service, typically a one to two week engagement. <a href="/contact/">Send a brief</a> and you get a direct reply within 12 hours.</p>
+</div>
+</article>
+
+<section class="wrap" style="padding-bottom:104px">
+<div style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 20px;margin-bottom:32px"><h2 class="hl h2" style="margin:0">Keep reading</h2></div>
+<a class="ix" href="/writing/whatsapp-ai-assistant-cloudflare-workers/" style="justify-content:space-between"><span class="hl rt" style="flex:1 1 420px;min-width:0">WhatsApp AI assistant on Cloudflare Workers</span><span class="muted" style="font-size:16px">Read the article</span></a><a class="ix" href="/writing/how-long-to-build-an-ai-agent/" style="justify-content:space-between;border-bottom:1px solid rgba(31,39,35,0.22)"><span class="hl rt" style="flex:1 1 420px;min-width:0">How long to build an AI agent</span><span class="muted" style="font-size:16px">Read the article</span></a>
+</section></main>
+<footer class="wrap"><div style="padding:36px 0 32px;border-top:1px solid rgba(31,39,35,0.22);color:#5F6A64"><div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:12px 40px"><div><div class="serif" style="font-size:24px;font-weight:500;letter-spacing:-0.01em;color:#1F2723">Kumar Harsh</div><div class="cap" style="margin-top:4px;color:#5F6A64">Typeset in Cormorant Garamond and Hanken Grotesk. Edition 2026.</div></div><span class="fl" style="display:flex;flex-wrap:wrap;gap:0 28px;font-size:15px"><a href="https://github.com/haarsh24">GitHub</a><a href="https://www.linkedin.com/in/kumarharshn/">LinkedIn</a><a href="https://x.com/bhaksaalaa">X</a><a href="https://instagram.com/haarshn">Instagram</a><a href="/writing/">Writing</a><a href="/contact/">Contact</a></span></div><div style="margin-top:20px;font-size:14px;color:#5F6A64">© 2026 Kumar Harsh. Freelance AI engineer, Bengaluru, India.</div></div></footer>
+</body>
+</html>

@@ -12,6 +12,14 @@ const pages = {
   about: 'about/index.html',
   contact: 'contact/index.html',
   notFound: '404.html',
+  svcAgents: 'services/ai-agents/index.html',
+  svcRag: 'services/rag/index.html',
+  svcMvp: 'services/mvp-sprint/index.html',
+  svcReliability: 'services/ai-reliability/index.html',
+  writing: 'writing/index.html',
+  artWhatsapp: 'writing/whatsapp-ai-assistant-cloudflare-workers/index.html',
+  artFailover: 'writing/llm-provider-failover/index.html',
+  artTimeline: 'writing/how-long-to-build-an-ai-agent/index.html',
 };
 
 export default defineConfig(({mode}) => {
